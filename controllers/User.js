@@ -4,10 +4,7 @@ module.exports.signup=async(req,res)=>{
     try{
      let {username,email,password}= req.body;
      const newUser = new User({username,email});
-     console.log(newUser);
      const registerUser = await User.register(newUser, password);
-     console.log(registerUser);
-     console.log("hiii");
 
      req.login (registerUser ,(err)=>{
          if(err){
@@ -15,17 +12,15 @@ module.exports.signup=async(req,res)=>{
              return next(err);
              
          }
-         console.log("hiii");
      })   
     }
     catch(e){
      req.flash("error",e.message);
-     res.redirect("http://localhost:3000/");
+     res.redirect("https://zerodha-project-dwj8.onrender.com/signup");
     }
      
  };
  module.exports.renderSignupForm= (req,res)=>{
-    console.log("get req");
     res.send("hello");
 };
 
